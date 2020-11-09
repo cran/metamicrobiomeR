@@ -59,9 +59,11 @@ p.bf.l2$p
 ##### Comparison between breastfeeding statuses adjusting for age of infants at sample collection using GAMLSS-BEZI 
 ```{r bacrelcomgamlss, results="hide"}
 # Note: running time is not long in regular laptop for both GAMLSS-BEZI analysis (~10s) and meta-analysis (~5s).  
-# However, to save running time, only taxonomies of one small phylum are selected for differential analysis example.  
-tl<-colnames(taxtab6)[grep("k__bacteria.p__fusobacteria",colnames(taxtab6))] 
-taxacom.ex<-taxa.compare(taxtab=taxtab6[,c("personid","x.sampleid","bf","age.sample",tl)], propmed.rel="gamlss",comvar="bf",adjustvar="age.sample",longitudinal="yes",p.adjust.method="fdr")
+# However, to save running time, only taxonomies of one small phylum are selected for differential analysis example. 
+tab6<-as.data.frame(taxtab6)
+tl<-colnames(taxtab6)[grep("k__bacteria.p__fusobacteria",colnames(taxtab6))]
+taxacom.ex<-taxa.compare(taxtab=tab6[,c("personid","x.sampleid","bf","age.sample",tl)],propmed.rel="gamlss",comvar="bf",adjustvar="age.sample",
+longitudinal="yes",p.adjust.method="fdr")
 ```
 
 Show results: 
@@ -69,16 +71,17 @@ Show results:
 #phylum
 taxcomtab.show(taxcomtab=taxacom.ex,tax.select="none", showvar="bfNon_exclusiveBF", tax.lev="l2",readjust.p=TRUE,p.adjust.method="fdr",p.cutoff = 1)
 #genus
-taxcomtab.show(taxcomtab=taxacom.ex,tax.select="none", showvar="bfNon_exclusiveBF", tax.lev="l6",readjust.p=TRUE,p.adjust.method="fdr",p.cutoff = 1)
+taxcomtab.show(taxcomtab=taxacom.ex,tax.select="none", showvar="bfNon_exclusiveBF", tax.lev="l6", readjust.p=TRUE,p.adjust.method="fdr",p.cutoff = 1)
 ```
+
 
 ##### Comparison between breastfeeding statuses adjusting for age of infants at sample collection using LM with arcsin squareroot transformation (LMAS)
 ```{r bacrellmeas}
-taxacom.lmas<-taxa.compare(taxtab=taxtab6[,c("personid","x.sampleid","bf","age.sample",tl)], propmed.rel="lm",transform="asin.sqrt",comvar="bf",adjustvar="age.sample", longitudinal="yes",p.adjust.method="fdr")
+taxacom.lmas<-taxa.compare(taxtab=tab6[,c("personid","x.sampleid","bf","age.sample",tl)], propmed.rel="lm",transform="asin.sqrt",comvar="bf",adjustvar="age.sample", longitudinal="yes",p.adjust.method="fdr")
 #phylum
-taxcomtab.show(taxcomtab=taxacom.lmas,tax.select="none", showvar="bfNon_exclusiveBF", tax.lev="l2",readjust.p=TRUE,p.adjust.method="fdr",p.cutoff = 1)
+taxcomtab.show(taxcomtab=taxacom.lmas,tax.select="none", showvar="bfNon_exclusiveBF", tax.lev="l2",readjust.p=TRUE,p.adjust.method="fdr",p.cutoff = 1, digit=5,p.digit=5) 
 #family
-taxcomtab.show(taxcomtab=taxacom.lmas,tax.select="none", showvar="bfNon_exclusiveBF", tax.lev="l5",readjust.p=TRUE,p.adjust.method="fdr",p.cutoff = 1)
+taxcomtab.show(taxcomtab=taxacom.lmas,tax.select="none", showvar="bfNon_exclusiveBF", tax.lev="l5",readjust.p=TRUE,p.adjust.method="fdr",p.cutoff = 1, digit=5,p.digit=5)
 ```
 
 ### Comparison of relative abundance of bacterial functional (KEGG) pathways between male vs. female infants < 6 months adjusting for breastfeeding statuses and age of infants at sample collection

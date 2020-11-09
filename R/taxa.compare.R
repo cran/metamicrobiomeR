@@ -21,8 +21,9 @@
 #' @examples
 #' #Load summary tables of bacterial taxa relative abundance from Bangladesh data
 #' data(taxtab6)
+#' tab6<-as.data.frame(taxtab6)
 #' tl<-colnames(taxtab6)[grep("k__bacteria.p__fusobacteria",colnames(taxtab6))]
-#' taxacom.ex<-taxa.compare(taxtab=taxtab6[,c("personid","x.sampleid","bf","age.sample",tl)],
+#' taxacom.ex<-taxa.compare(taxtab=tab6[,c("personid","x.sampleid","bf","age.sample",tl)],
 #' propmed.rel="gamlss",comvar="bf",adjustvar="age.sample",
 #' longitudinal="yes",p.adjust.method="fdr")
 
@@ -112,7 +113,7 @@ taxa.compare<-function(taxtab,propmed.rel="gamlss",transform="none",zeroreplace.
       # Calculate the median of PR
       pr.median <- matrixStats::colMedians(pr, na.rm=TRUE)
       # Record the number of samples used for calculating the GMPR
-      comm.no[i] <<- sum(incl.no >= intersect.no)
+      #comm.no[i] <<- sum(incl.no >= intersect.no)
       # Geometric mean of PR median
       if (comm.no[i] > 1) {
         return(exp(mean(log(pr.median[incl.no >= intersect.no]))))
@@ -195,18 +196,23 @@ taxa.compare<-function(taxtab,propmed.rel="gamlss",transform="none",zeroreplace.
     }
     #Generalized Additive Models for Location Scale and Shape (GAMLSS): Betazeroinflated (BEZI) family, mu link logit
     if (propmed.rel=="gamlss"){
-      testdat<-taxdat[,c(taxname[i],comvar,adjustvar,"personid")]
-      testdat[,taxname[i]][testdat[,taxname[i]]>=1]<-0.9999 # dirty fix for 1 value of relative abundance
-      testdat<-stats::na.omit(testdat)
-      if (longitudinal=="yes"){
-        fitsum<-try(summary(gamlss::gamlss(stats::as.formula(paste(taxname[i],paste(c(comvar,adjustvar,"random(personid)"),collapse="+"),sep="~")), family = BEZI, data = testdat, trace = FALSE),save=TRUE))
-        #To check: gamlss:random(personid) will give different results from random(personid); gamlss.family=BEZI will give different results from family=BEZI
-        #fitsum<-try(summary(gamlss::gamlss(stats::as.formula(paste(taxname[i],paste(c(comvar,adjustvar,"gamlss::random(personid)"),collapse="+"),sep="~")), gamlss.family = BEZI, data = testdat, trace = FALSE),save=TRUE))
+      if (longitudinal == "yes") {
+        testdat <- taxdat[, c(taxname[i], comvar, adjustvar, "personid")]
+        testdat[, taxname[i]][testdat[, taxname[i]] >= 1] <- 0.9999
+        testdat <- stats::na.omit(testdat)
+        fitsum <- try(summary(gamlss::gamlss(stats::as.formula(paste(taxname[i],
+                                  paste(c(comvar, adjustvar, "random(personid)"),
+                                  collapse = "+"), sep = "~")), family = BEZI,
+                                  data = testdat, trace = FALSE), save = TRUE))
       }
-      if (longitudinal=="no"){
-        fitsum<-try(summary(gamlss::gamlss(stats::as.formula(paste(taxname[i],paste(c(comvar,adjustvar),collapse="+"),sep="~")), family = BEZI, data = testdat, trace = FALSE),save=TRUE))
-        #To check: gamlss:random(personid) will give different results from random(personid); gamlss.family=BEZI will give different results from family=BEZI
-        #fitsum<-try(summary(gamlss::gamlss(stats::as.formula(paste(taxname[i],paste(c(comvar,adjustvar),collapse="+"),sep="~")), gamlss.family = BEZI, data = testdat, trace = FALSE),save=TRUE))
+      if (longitudinal == "no") {
+        testdat <- taxdat[, c(taxname[i], comvar, adjustvar)]
+        testdat[, taxname[i]][testdat[, taxname[i]] >= 1] <- 0.9999
+        testdat <- stats::na.omit(testdat)
+        fitsum <- try(summary(gamlss::gamlss(stats::as.formula(paste(taxname[i],
+                                    paste(c(comvar, adjustvar), collapse = "+"),
+                                    sep = "~")), family = BEZI, data = testdat,
+                                    trace = FALSE), save = TRUE))
       }
       if (class(fitsum) == "try-error") {
         warning("Error in model fit, NA introduced.\n")

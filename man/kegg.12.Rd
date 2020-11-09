@@ -4,9 +4,11 @@
 \name{kegg.12}
 \alias{kegg.12}
 \title{Pathway abundance data.}
-\format{A list of 2 dataframes for level 1 and level 2 of KEGG pathways.}
+\format{
+A list of 2 dataframes for level 1 and level 2 of KEGG pathways.
+}
 \source{
-\href{https://gordonlab.wustl.edu/Subramanian_6_14/Nature_2014_Processed_16S_rRNA_datasets.html}{Gordon Lab}
+\href{https://gordonlab.wustl.edu/supplemental-data/supplemental-data-portal/subramanian-et-al-2014/}{Gordon Lab}
 }
 \usage{
 data(kegg.12)

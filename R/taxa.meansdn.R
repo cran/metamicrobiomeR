@@ -44,7 +44,7 @@ taxa.meansdn<-function(taxtab, sumvar, groupvar,percent.filter=0.05,relabund.fil
     estisum<-sumdat %>%
       dplyr::mutate(groupvar=as.factor(as.character(round(as.numeric(as.character(groupvar)),0)))) %>%
       dplyr::group_by(sumvar, groupvar) %>%
-      dplyr::summarise_all(dplyr::funs(mean(.), sd(.), n()))
+      dplyr::summarise_all(list(~mean(.), ~sd(.), ~n()))
     estisum<-estisum%>%
       dplyr::mutate(groupvar=as.numeric(as.character(groupvar))) %>%
       dplyr::arrange(sumvar,groupvar)
@@ -53,7 +53,7 @@ taxa.meansdn<-function(taxtab, sumvar, groupvar,percent.filter=0.05,relabund.fil
   else {
     estisum<-sumdat %>%
       dplyr::group_by(sumvar, groupvar) %>%
-      dplyr::summarise_all(dplyr::funs(mean(.), sd(.), n()))
+      dplyr::summarise_all(list(~mean(.), ~sd(.), ~n()))
   }
   colnames(estisum)[colnames(estisum) %in% c("sumvar","groupvar")]<-c(sumvar,groupvar)
   return(estisum)

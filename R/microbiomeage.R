@@ -63,7 +63,7 @@ microbiomeage<-function(l6.relabundtab, bal6){
   traindat<-SdataMatrix[train,]
   testdat<-SdataMatrix[test,]
   #randomForest
-  set.seed(123)
+  #set.seed(123)
   rffit<- caret::train(age.sample ~ ., data = traindat, method = "rf",preProc = "center", proximity = TRUE)
   #predict on the Bangladesh data
   testage <- predict(rffit, newdata = testdat)

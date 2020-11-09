@@ -4,9 +4,11 @@
 \name{taxtab6}
 \alias{taxtab6}
 \title{Taxonomic relative abundance data.}
-\format{A data frame with 322 row (samples) and 803 variables (including mapping varilable and bacterial taxonomies from phylum to genus level).}
+\format{
+A data frame with 322 row (samples) and 803 variables (including mapping varilable and bacterial taxonomies from phylum to genus level).
+}
 \source{
-\href{https://gordonlab.wustl.edu/Subramanian_6_14/Nature_2014_Processed_16S_rRNA_datasets.html}{Gordon Lab}
+\href{https://gordonlab.wustl.edu/supplemental-data/supplemental-data-portal/subramanian-et-al-2014/}{Gordon Lab}
 }
 \usage{
 data(taxtab6)
@@ -19,8 +21,9 @@ Mapping file is merged to the data for ready use.
 \examples{
 #Load summary tables of bacterial taxa relative abundance from Bangladesh data
 data(taxtab6)
+tab6<-as.data.frame(taxtab6)
 tl<-colnames(taxtab6)[grep("k__bacteria.p__fusobacteria",colnames(taxtab6))]
-taxacom.ex<-taxa.compare(taxtab=taxtab6[,c("personid","x.sampleid","bf","age.sample",tl)],
+taxacom.ex<-taxa.compare(taxtab=tab6[,c("personid","x.sampleid","bf","age.sample",tl)],
 propmed.rel="gamlss",comvar="bf",adjustvar="age.sample",
 longitudinal="yes",p.adjust.method="fdr")
 }

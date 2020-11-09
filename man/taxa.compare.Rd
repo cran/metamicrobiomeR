@@ -4,10 +4,19 @@
 \alias{taxa.compare}
 \title{Compare taxa relative abundance}
 \usage{
-taxa.compare(taxtab, propmed.rel = "gamlss", transform = "none",
-  zeroreplace.method = "none", comvar, adjustvar,
-  personid = "personid", longitudinal = "yes", percent.filter = 0.05,
-  relabund.filter = 5e-05, p.adjust.method = "fdr")
+taxa.compare(
+  taxtab,
+  propmed.rel = "gamlss",
+  transform = "none",
+  zeroreplace.method = "none",
+  comvar,
+  adjustvar,
+  personid = "personid",
+  longitudinal = "yes",
+  percent.filter = 0.05,
+  relabund.filter = 5e-05,
+  p.adjust.method = "fdr"
+)
 }
 \arguments{
 \item{taxtab}{taxa relative abundance table (already merged to mapping file) from phylum to species or any preferred highest taxa level.}
@@ -41,8 +50,9 @@ This function compares taxa relative abundance summary tables at all levels betw
 \examples{
 #Load summary tables of bacterial taxa relative abundance from Bangladesh data
 data(taxtab6)
+tab6<-as.data.frame(taxtab6)
 tl<-colnames(taxtab6)[grep("k__bacteria.p__fusobacteria",colnames(taxtab6))]
-taxacom.ex<-taxa.compare(taxtab=taxtab6[,c("personid","x.sampleid","bf","age.sample",tl)],
+taxacom.ex<-taxa.compare(taxtab=tab6[,c("personid","x.sampleid","bf","age.sample",tl)],
 propmed.rel="gamlss",comvar="bf",adjustvar="age.sample",
 longitudinal="yes",p.adjust.method="fdr")
 }

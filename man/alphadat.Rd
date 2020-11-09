@@ -4,9 +4,11 @@
 \name{alphadat}
 \alias{alphadat}
 \title{Alpha diversity data.}
-\format{A list of 4 dataframes for four indexes: Chao1, Observed_species, PD_whole_tree, Shannon.}
+\format{
+A list of 4 dataframes for four indexes: Chao1, Observed_species, PD_whole_tree, Shannon.
+}
 \source{
-\href{https://gordonlab.wustl.edu/Subramanian_6_14/Nature_2014_Processed_16S_rRNA_datasets.html}{Gordon Lab}
+\href{https://gordonlab.wustl.edu/supplemental-data/supplemental-data-portal/subramanian-et-al-2014/}{Gordon Lab}
 }
 \usage{
 data(alphadat)

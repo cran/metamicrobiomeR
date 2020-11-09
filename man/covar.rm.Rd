@@ -4,9 +4,11 @@
 \name{covar.rm}
 \alias{covar.rm}
 \title{Covariate data.}
-\format{A dataframe with 996 rows and 32 variables.}
+\format{
+A dataframe with 996 rows and 32 variables.
+}
 \source{
-\href{https://gordonlab.wustl.edu/Subramanian_6_14/Nature_2014_Processed_16S_rRNA_datasets.html}{Gordon Lab}
+\href{https://gordonlab.wustl.edu/supplemental-data/supplemental-data-portal/subramanian-et-al-2014/}{Gordon Lab}
 }
 \usage{
 data(covar.rm)

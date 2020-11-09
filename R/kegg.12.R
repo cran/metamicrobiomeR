@@ -15,7 +15,7 @@
 #' @references Subramanian et al. Nature. 2014 Jun 19; 510(7505): 417–421.
 #' (\href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4189846/}{PubMed})
 #'
-#' @source \href{https://gordonlab.wustl.edu/Subramanian_6_14/Nature_2014_Processed_16S_rRNA_datasets.html}{Gordon Lab}
+#' @source \href{https://gordonlab.wustl.edu/supplemental-data/supplemental-data-portal/subramanian-et-al-2014/}{Gordon Lab}
 #'
 #' @examples
 #' data(kegg.12)

@@ -4,8 +4,13 @@
 \alias{read.multi}
 \title{Read multiple files}
 \usage{
-read.multi(patht, patternt = ".txt", assignt = "no", study = NULL,
-  tolower.colnames = TRUE)
+read.multi(
+  patht,
+  patternt = ".txt",
+  assignt = "no",
+  study = NULL,
+  tolower.colnames = TRUE
+)
 }
 \arguments{
 \item{patht}{path to files.}

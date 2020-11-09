@@ -4,9 +4,18 @@
 \alias{alpha.compare}
 \title{Compare multiple alpha diversity indexes between groups}
 \usage{
-alpha.compare(datlist, depth, mapfile, mapsampleid, comvar, adjustvar,
-  personid = "personid", longitudinal = "yes", age.limit = 1e+06,
-  standardize = FALSE)
+alpha.compare(
+  datlist,
+  depth,
+  mapfile,
+  mapsampleid,
+  comvar,
+  adjustvar,
+  personid = "personid",
+  longitudinal = "yes",
+  age.limit = 1e+06,
+  standardize = FALSE
+)
 }
 \arguments{
 \item{datlist}{the list of your dataframe.}

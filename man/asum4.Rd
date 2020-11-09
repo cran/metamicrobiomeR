@@ -4,9 +4,11 @@
 \name{asum4}
 \alias{asum4}
 \title{Combined alpha diversity data for meta-analysis.}
-\format{A dataframe with 16 rows and 18 variables.}
+\format{
+A dataframe with 16 rows and 18 variables.
+}
 \source{
-\href{https://gordonlab.wustl.edu/Subramanian_6_14/Nature_2014_Processed_16S_rRNA_datasets.html}{Gordon Lab}
+\href{https://gordonlab.wustl.edu/supplemental-data/supplemental-data-portal/subramanian-et-al-2014/}{Gordon Lab}
 }
 \usage{
 data(asum4)
@@ -29,9 +31,9 @@ Bender et al. Sci Transl Med. 2016 Jul 27; 8(349): 349ra100.
 (\href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5301310/}{PubMed})
 
 Pannaraj et al. JAMA Pediatr. 2017;90095(7):647–54.
-(\href{https://www.ncbi.nlm.nih.gov/pubmed/28492938}{PubMed})
+(\href{https://pubmed.ncbi.nlm.nih.gov/28492938/}{PubMed})
 
 Thompson et al. Front Cell Infect Microbiol. 2015;5:3.
-(\href{https://www.ncbi.nlm.nih.gov/pubmed/25705611?dopt=Abstract}{PubMed})
+(\href{https://pubmed.ncbi.nlm.nih.gov/25705611/}{PubMed})
 }
 \keyword{datasets}

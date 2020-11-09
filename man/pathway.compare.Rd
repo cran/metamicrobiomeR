@@ -4,11 +4,22 @@
 \alias{pathway.compare}
 \title{Compare (kegg) pathway abundance}
 \usage{
-pathway.compare(pathtab, mapfile, sampleid = "sampleid",
-  pathsum = "rel", stat.med = "gamlss", transform = "none", comvar,
-  adjustvar, personid = "personid", longitudinal = "yes",
-  p.adjust.method = "fdr", percent.filter = 0.05,
-  relabund.filter = 5e-05, pooldata = FALSE)
+pathway.compare(
+  pathtab,
+  mapfile,
+  sampleid = "sampleid",
+  pathsum = "rel",
+  stat.med = "gamlss",
+  transform = "none",
+  comvar,
+  adjustvar,
+  personid = "personid",
+  longitudinal = "yes",
+  p.adjust.method = "fdr",
+  percent.filter = 0.05,
+  relabund.filter = 5e-05,
+  pooldata = FALSE
+)
 }
 \arguments{
 \item{pathtab}{list of pathway abundance table of all levels.}

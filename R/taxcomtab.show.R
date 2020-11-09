@@ -17,10 +17,11 @@
 #' @examples
 #' #Load summary tables of bacterial taxa relative abundance from Bangladesh data
 #' data(taxtab6)
+#' tab6<-as.data.frame(taxtab6)
 #' #Comparison of bacterial taxa relative abundance using GAMLSS
 #' # Only run on a few taxa of a phylum to save running time
 #' tl<-colnames(taxtab6)[grep("k__bacteria.p__fusobacteria",colnames(taxtab6))]
-#' taxacom.ex<-taxa.compare(taxtab=taxtab6[,c("personid","x.sampleid","bf","age.sample",tl)],
+#' taxacom.ex<-taxa.compare(taxtab=tab6[,c("personid","x.sampleid","bf","age.sample",tl)],
 #' propmed.rel="gamlss",comvar="bf",adjustvar="age.sample",
 #' longitudinal="yes",p.adjust.method="fdr")
 #' # show phylum results
@@ -38,11 +39,13 @@ taxcomtab.show<-function(taxcomtab,sumvar="taxa", tax.lev="l2",tax.select="none"
     al3<-mtaba1$id[-grep("o__",mtaba1$id)]
     al4<-mtaba1$id[-grep("f__",mtaba1$id)]
     al5<-mtaba1$id[-grep("g__",mtaba1$id)]
+    if (tax.lev!="l7"){
+      mtabal<-list(l2=mtaba1[mtaba1$id %in% al2,],l3=mtaba1[mtaba1$id %in% al3,],l4=mtaba1[mtaba1$id %in% al4,],l5=mtaba1[mtaba1$id %in% al5,],l6=mtaba1)
+    }
     if (tax.lev=="l7"){
       al6<-mtaba1$id[-grep("s__",mtaba1$id)]
       mtabal<-list(l2=mtaba1[mtaba1$id %in% al2,],l3=mtaba1[mtaba1$id %in% al3,],l4=mtaba1[mtaba1$id %in% al4,],l5=mtaba1[mtaba1$id %in% al5,],l6=mtaba1[mtaba1$id %in% al6,],l7=mtaba1)
     }
-    mtabal<-list(l2=mtaba1[mtaba1$id %in% al2,],l3=mtaba1[mtaba1$id %in% al3,],l4=mtaba1[mtaba1$id %in% al4,],l5=mtaba1[mtaba1$id %in% al5,],l6=mtaba1)
     mtaba<-mtabal[[tax.lev]]
     if (tax.lev=="l7"){
       taxuse<-mtaba$id[grep(".s__",mtaba$id)]

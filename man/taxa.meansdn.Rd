@@ -4,8 +4,14 @@
 \alias{taxa.meansdn}
 \title{Summarize abundance by group}
 \usage{
-taxa.meansdn(taxtab, sumvar, groupvar, percent.filter = 0.05,
-  relabund.filter = 5e-05, othervar = "none")
+taxa.meansdn(
+  taxtab,
+  sumvar,
+  groupvar,
+  percent.filter = 0.05,
+  relabund.filter = 5e-05,
+  othervar = "none"
+)
 }
 \arguments{
 \item{taxtab}{taxa/pathway  abundance table from phylum to species or any preferred highest taxa level.}

@@ -4,9 +4,18 @@
 \alias{taxcomtab.show}
 \title{Display abundance comparison results.}
 \usage{
-taxcomtab.show(taxcomtab, sumvar = "taxa", tax.lev = "l2",
-  tax.select = "none", showvar, readjust.p = FALSE,
-  p.adjust.method = "fdr", p.cutoff = 0.05, digit = 2, p.digit = 4)
+taxcomtab.show(
+  taxcomtab,
+  sumvar = "taxa",
+  tax.lev = "l2",
+  tax.select = "none",
+  showvar,
+  readjust.p = FALSE,
+  p.adjust.method = "fdr",
+  p.cutoff = 0.05,
+  digit = 2,
+  p.digit = 4
+)
 }
 \arguments{
 \item{taxcomtab}{table of taxa abundance comparison generated from taxa.compare.}
@@ -38,10 +47,11 @@ This function displays taxa/pathway abundance comparison results as table.
 \examples{
 #Load summary tables of bacterial taxa relative abundance from Bangladesh data
 data(taxtab6)
+tab6<-as.data.frame(taxtab6)
 #Comparison of bacterial taxa relative abundance using GAMLSS
 # Only run on a few taxa of a phylum to save running time
 tl<-colnames(taxtab6)[grep("k__bacteria.p__fusobacteria",colnames(taxtab6))]
-taxacom.ex<-taxa.compare(taxtab=taxtab6[,c("personid","x.sampleid","bf","age.sample",tl)],
+taxacom.ex<-taxa.compare(taxtab=tab6[,c("personid","x.sampleid","bf","age.sample",tl)],
 propmed.rel="gamlss",comvar="bf",adjustvar="age.sample",
 longitudinal="yes",p.adjust.method="fdr")
 # show phylum results

@@ -60,13 +60,13 @@ meta.taxa<-function(taxcomdat,estimate.pattern="Estimate.",se.pattern="Std. Erro
       if (nrow(testdat)>=percent.meta*(length(unique(taxcomdat$studylab)))){
         fit.meta<-meta::metagen(estimate, se, studlab=studylab,data=testdat,sm=summary.measure, backtransf=backtransform)
         #fixed effect
-        fitsum.f<-as.data.frame(matrix(c(summary(fit.meta)$fixed$TE,summary(fit.meta)$fixed$seTE,summary(fit.meta)$fixed$lower,summary(fit.meta)$fixed$upper,summary(fit.meta)$fixed$z,summary(fit.meta)$fixed$p),nrow=1))
-        colnames(fitsum.f)<-c("estimate",'se','ll','ul','z','p')
+        fitsum.f<-as.data.frame(matrix(c(summary(fit.meta)$fixed$TE,summary(fit.meta)$fixed$seTE,summary(fit.meta)$fixed$lower,summary(fit.meta)$fixed$upper,summary(fit.meta)$fixed$statistic,summary(fit.meta)$fixed$p),nrow=1))
+        colnames(fitsum.f)<-c("estimate",'se','ll','ul','statistic','p')
         fitsum.f[,pool.var]<-taxname[j]
         metatab.f<-plyr::rbind.fill(metatab.f,fitsum.f)
         #random effect
-        fitsum.r<-as.data.frame(matrix(c(summary(fit.meta)$random$TE,summary(fit.meta)$random$seTE,summary(fit.meta)$random$lower,summary(fit.meta)$random$upper,summary(fit.meta)$random$z,summary(fit.meta)$random$p),nrow=1))
-        colnames(fitsum.r)<-c("estimate",'se','ll','ul','z','p')
+        fitsum.r<-as.data.frame(matrix(c(summary(fit.meta)$random$TE,summary(fit.meta)$random$seTE,summary(fit.meta)$random$lower,summary(fit.meta)$random$upper,summary(fit.meta)$random$statistic,summary(fit.meta)$random$p),nrow=1))
+        colnames(fitsum.r)<-c("estimate",'se','ll','ul','statistic','p')
         fitsum.r[,pool.var]<-taxname[j]
         metatab.r<-plyr::rbind.fill(metatab.r,fitsum.r)
       }

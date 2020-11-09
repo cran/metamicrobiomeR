@@ -4,10 +4,20 @@
 \alias{taxa.mean.plot}
 \title{Plot mean taxa abundance}
 \usage{
-taxa.mean.plot(tabmean, sumvar = "taxa", tax.select = "none",
-  tax.lev = "l2", comvar, groupvar, mean.filter = 0.005,
-  pallete.by.phylum = FALSE, show.taxname = "full",
-  legend.position = "right", xlab = "", ylab = "Relative abundance")
+taxa.mean.plot(
+  tabmean,
+  sumvar = "taxa",
+  tax.select = "none",
+  tax.lev = "l2",
+  comvar,
+  groupvar,
+  mean.filter = 0.005,
+  pallete.by.phylum = FALSE,
+  show.taxname = "full",
+  legend.position = "right",
+  xlab = "",
+  ylab = "Relative abundance"
+)
 }
 \arguments{
 \item{tabmean}{table of mean abundance generated from taxa.meansdn.}

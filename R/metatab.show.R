@@ -76,42 +76,42 @@ metatab.show<-function(metatab,com.pooled.tab,sumvar="taxa",highest.lev="g",tax.
       if (readjust.p==TRUE){
         mtab[,"p.adjust"]<-stats::p.adjust(mtab[,"p"],method="fdr")
       }
-      taxsig<-mtab[mtab[,p.cutoff.type]<=p.cutoff& !is.na(mtab[,p.cutoff.type]),c("estimate",'se','ll','ul','z','p','p.adjust','id')]
+      taxsig<-mtab[mtab[,p.cutoff.type]<=p.cutoff& !is.na(mtab[,p.cutoff.type]),c("estimate",'se','ll','ul','statistic','p','p.adjust','id')]
     }
     if (tax.lev=="l3"){
       mtab<-mtaba[(mtaba$id %in% mtaba$id[grep("c__",mtaba$id)]),]
       if (readjust.p==TRUE){
         mtab[,"p.adjust"]<-stats::p.adjust(mtab[,"p"],method="fdr")
       }
-      taxsig<-mtab[(mtab$id %in% mtab$id[grep("c__",mtab$id)]) &mtab[,p.cutoff.type]<=p.cutoff& !is.na(mtab[,p.cutoff.type]),c("estimate",'se','ll','ul','z','p','p.adjust','id')]
+      taxsig<-mtab[(mtab$id %in% mtab$id[grep("c__",mtab$id)]) &mtab[,p.cutoff.type]<=p.cutoff& !is.na(mtab[,p.cutoff.type]),c("estimate",'se','ll','ul','statistic','p','p.adjust','id')]
     }
     if (tax.lev=="l4"){
       mtab<-mtaba[(mtaba$id %in% mtaba$id[grep("o__",mtaba$id)]),]
       if (readjust.p==TRUE){
         mtab[,"p.adjust"]<-stats::p.adjust(mtab[,"p"],method="fdr")
       }
-      taxsig<-mtab[(mtab$id %in% mtab$id[grep("o__",mtab$id)]) &mtab[,p.cutoff.type]<=p.cutoff& !is.na(mtab[,p.cutoff.type]),c("estimate",'se','ll','ul','z','p','p.adjust','id')]
+      taxsig<-mtab[(mtab$id %in% mtab$id[grep("o__",mtab$id)]) &mtab[,p.cutoff.type]<=p.cutoff& !is.na(mtab[,p.cutoff.type]),c("estimate",'se','ll','ul','statistic','p','p.adjust','id')]
     }
     if (tax.lev=="l5"){
       mtab<-mtaba[(mtaba$id %in% mtaba$id[grep("f__",mtaba$id)]),]
       if (readjust.p==TRUE){
         mtab[,"p.adjust"]<-stats::p.adjust(mtab[,"p"],method="fdr")
       }
-      taxsig<-mtab[(mtab$id %in% mtab$id[grep("f__",mtab$id)]) &mtab[,p.cutoff.type]<=p.cutoff& !is.na(mtab[,p.cutoff.type]),c("estimate",'se','ll','ul','z','p','p.adjust','id')]
+      taxsig<-mtab[(mtab$id %in% mtab$id[grep("f__",mtab$id)]) &mtab[,p.cutoff.type]<=p.cutoff& !is.na(mtab[,p.cutoff.type]),c("estimate",'se','ll','ul','statistic','p','p.adjust','id')]
     }
     if (tax.lev=="l6"){
       mtab<-mtaba[(mtaba$id %in% mtaba$id[grep("g__",mtaba$id)]),]
       if (readjust.p==TRUE){
         mtab[,"p.adjust"]<-stats::p.adjust(mtab[,"p"],method="fdr")
       }
-      taxsig<-mtab[(mtab$id %in% mtab$id[grep("g__",mtab$id)]) &mtab[,p.cutoff.type]<=p.cutoff& !is.na(mtab[,p.cutoff.type]),c("estimate",'se','ll','ul','z','p','p.adjust','id')]
+      taxsig<-mtab[(mtab$id %in% mtab$id[grep("g__",mtab$id)]) &mtab[,p.cutoff.type]<=p.cutoff& !is.na(mtab[,p.cutoff.type]),c("estimate",'se','ll','ul','statistic','p','p.adjust','id')]
     }
     if (tax.lev=="l7"){
       mtab<-mtaba[(mtaba$id %in% mtaba$id[grep("s__",mtaba$id)]),]
       if (readjust.p==TRUE){
         mtab[,"p.adjust"]<-stats::p.adjust(mtab[,"p"],method="fdr")
       }
-      taxsig<-mtab[(mtab$id %in% mtab$id[grep("s__",mtab$id)]) &mtab[,p.cutoff.type]<=p.cutoff& !is.na(mtab[,p.cutoff.type]),c("estimate",'se','ll','ul','z','p','p.adjust','id')]
+      taxsig<-mtab[(mtab$id %in% mtab$id[grep("s__",mtab$id)]) &mtab[,p.cutoff.type]<=p.cutoff& !is.na(mtab[,p.cutoff.type]),c("estimate",'se','ll','ul','statistic','p','p.adjust','id')]
     }
   }
   if (sumvar=="path"){
@@ -119,7 +119,7 @@ metatab.show<-function(metatab,com.pooled.tab,sumvar="taxa",highest.lev="g",tax.
     if (readjust.p==TRUE){
       mtab[,"p.adjust"]<-stats::p.adjust(mtab[,"p"],method="fdr")
     }
-    taxsig<-mtab[mtab[,p.cutoff.type]<=p.cutoff& !is.na(mtab[,p.cutoff.type]),c("estimate",'se','ll','ul','z','p','p.adjust','id')]
+    taxsig<-mtab[mtab[,p.cutoff.type]<=p.cutoff& !is.na(mtab[,p.cutoff.type]),c("estimate",'se','ll','ul','statistic','p','p.adjust','id')]
   }
   if (nrow(taxsig)>0){
     taxsig$study<-"Meta_analysis"
